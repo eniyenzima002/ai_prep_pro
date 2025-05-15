@@ -81,9 +81,7 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
             variableValues: {
                 username: userName,
                 userid: userId
-            },
-            clientMessages: [],
-            serverMessages: []
+            }
         })
 
         console.log("Assistant", myAssist)
@@ -95,7 +93,7 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
     };
 
     const lastMessage = messages[messages.length - 1]?.content;
-    const isCallInactiveOrFinished = callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED
+    // const isCallInactiveOrFinished = callStatus === CallStatus.INACTIVE || callStatus === CallStatus.FINISHED
 
     return (
         <>
@@ -149,9 +147,7 @@ const Agent = ({ userName, userId, type }: AgentProps) => {
                     />
 
                     <span className="relative">
-                    {isCallInactiveOrFinished
-                        ? "Call"
-                        : ". . ."}
+                        {callStatus === "INACTIVE" || callStatus === "FINISHED" ? "Call" : ". . ."}
                     </span>
                 </button>
                 ) : (
